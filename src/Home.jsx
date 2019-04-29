@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import './App.css';
 import web3 from './Web3';
 import giBookJSON from './contracts/giBook.json';
-//import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
+import Content from './Content.jsx';
+import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 
 
 const address = '0xb218e1d2d92dbf5cf5ce9339361fd33043c3635d';
@@ -21,7 +21,8 @@ class Home extends Component {
       totalSupply: '',
       times: '',
       toAccount: '',
-      targetAccount: ''
+      targetAccount: '',
+      permission: false
     }
     this.handleChangeText = this.handleChangeText.bind(this);
     this.getTimes()
@@ -54,9 +55,9 @@ class Home extends Component {
     const accounts = await web3.eth.getAccounts()
     const checked = await giBook.methods.checkToken(accounts[0]).call();
     if(checked === true) {
-      alert('authorized')
+      this.setState({permission: true})
     } else if(checked === false) {
-      alert('not authorized')
+      alert('You do not hace permission to read the book.')
     }
   }
 
@@ -71,20 +72,26 @@ class Home extends Component {
 
   render() {
     return (
+    <Router>
     <div className="home">
       <header>
-        <h2 id ="title">GiBook</h2>
       </header>
         <div className="bookContents">
         <img src="" alt="bookImage"></img>
         <p id="bookTitle">Title: <span>『Zero To One』</span></p>
         <button onClick={this.checkToken}>Read more</button>
+        <a href="/content">Read More A tag</a>
         </div>
         <p id="authorized"></p>
         <input type="text" name="toAccount" onChange={this.handleChangeText} value={this.state.toAccount}/>
         <button id="give" onClick={this.transfer}>GIVE</button>
         <p id="transferDetail">This book is read by {this.state.times} people</p>
+        <Switch>
+        <Route exact path="/content" component={Content}></Route>
+        </Switch>
+
     </div>
+    </Router>
   );
 
   

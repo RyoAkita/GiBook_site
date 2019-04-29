@@ -1,14 +1,25 @@
 .App {
   text-align: center;
-  display: flex;
   margin: 40px auto 0;
+  text-align: center;
 }
 
 .left-navi {
   list-style-type: none;
-  border-right: 1px solid #ccc;
   margin-right: 40px;
   padding-right: 40px;
+  display: inline-block;
+  border-bottom: 1px solid #ccc;
+  width: 50%;
+}
+
+.link {
+  display: inline-block;
+  margin-left: 40px;
+}
+
+#appTitle {
+  display: block;
 }
 
 
