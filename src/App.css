@@ -16,10 +16,29 @@
 .link {
   display: inline-block;
   margin-left: 40px;
+
 }
+
+.navi {
+  text-decoration: none;
+  color: black;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.navi:hover {
+  color: blue;
+  border-bottom: 3px solid blue;
+}
+
+
+
 
 #appTitle {
   display: block;
+  background-color: rgb(11, 58, 145);
+  color: white;
+  font-family: serif;
 }
 
 

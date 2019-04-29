@@ -3,6 +3,8 @@ import web3 from './Web3';
 import giBookJSON from './contracts/giBook.json';
 import Content from './Content.jsx';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
+import './Home.css';
+import bookImg from './img/bookTitle.jpeg';
 
 
 const address = '0xb218e1d2d92dbf5cf5ce9339361fd33043c3635d';
@@ -25,7 +27,8 @@ class Home extends Component {
       permission: false
     }
     this.handleChangeText = this.handleChangeText.bind(this);
-    this.getTimes()
+    this.authorized();
+    this.getTimes();
   }
 
   handleChangeText = (event) => {
@@ -54,12 +57,23 @@ class Home extends Component {
     this.setState({message: 'Checking authentification'});
     const accounts = await web3.eth.getAccounts()
     const checked = await giBook.methods.checkToken(accounts[0]).call();
-    if(checked === true) {
-      this.setState({permission: true})
-    } else if(checked === false) {
-      alert('You do not hace permission to read the book.')
+    if(checked === false) {
+      alert('You do not have permission to read the book.');
+      return;
     }
   }
+
+    authorized = async() => {
+    this.setState({message: 'Checking authentification'});
+    const accounts = await web3.eth.getAccounts()
+    const checked = await giBook.methods.checkToken(accounts[0]).call();
+    if(checked === true) {
+      document.querySelector('#authorized').innerHTML = 'You have GiBook Token, hence you can read the book.'
+    } else if(checked === false) {
+      document.querySelector('#authorized').innerHTML = 'You do not have GiBookToken to read the book. You should get GiBook Token from someone.'
+    }
+  }
+
 
   checkTotalSupply = async() => {
     const totalSupply = await giBook.methods.totalSupply().call();
@@ -74,17 +88,19 @@ class Home extends Component {
     return (
     <Router>
     <div className="home">
-      <header>
-      </header>
         <div className="bookContents">
-        <img src="" alt="bookImage"></img>
-        <p id="bookTitle">Title: <span>『Zero To One』</span></p>
-        <button onClick={this.checkToken}>Read more</button>
-        <a href="/content">Read More A tag</a>
+        <img src={bookImg} id="bookImg" alt="bookImage"></img>
+        <p id="bookTitle">Title: <span id="bookTitleName">『Zero To One』</span></p>
+        <a id="readButton" onClick={this.checkToken} href="/content">Read more</a>
         </div>
         <p id="authorized"></p>
-        <input type="text" name="toAccount" onChange={this.handleChangeText} value={this.state.toAccount}/>
-        <button id="give" onClick={this.transfer}>GIVE</button>
+        <p id="illustration">You can give your GiBook Token to someone by using metamask. <br></br>Write down an address for sending Gibook Token.</p>
+        <div className="iptxt">
+        <input type="text" name="toAccount" className="address" onChange={this.handleChangeText} value={this.state.toAccount}/>
+        <label>Address</label>
+        <span className="focus_line"></span>
+        </div>
+        <a id="readButton" onClick={this.transfer}>GIVE</a>
         <p id="transferDetail">This book is read by {this.state.times} people</p>
         <Switch>
         <Route exact path="/content" component={Content}></Route>

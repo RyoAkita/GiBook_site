@@ -14,7 +14,6 @@ class Content extends Component {
 
 
     this.state = {
-      permission: false
     }
     this.checkToken();
   }
@@ -24,7 +23,6 @@ class Content extends Component {
     const accounts = await web3.eth.getAccounts()
     const checked = await giBook.methods.checkToken(accounts[0]).call();
     if(checked === true) {
-      this.setState({permission: true})
       console.log('You have permission')
     } else if(checked === false) {
       document.querySelector('.content').style.display = "none";
