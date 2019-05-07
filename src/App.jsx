@@ -23,6 +23,9 @@ const App = () => (
         <Route path="/system" component={System}></Route>
         <Route path="/content" component={Content}></Route>
       </Switch>
+      <p className="footer">&copy; GiBook</p>
+
+      
     </div>
   </Router>
 );

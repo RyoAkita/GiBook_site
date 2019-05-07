@@ -90,7 +90,9 @@ class Home extends Component {
     <div className="home">
         <div className="bookContents">
         <img src={bookImg} id="bookImg" alt="bookImage"></img>
-        <p id="bookTitle">Title: <span id="bookTitleName">『Zero To One』</span></p>
+        <p id="bookTitle">Title: <span id="bookTitleName">『Vision for LIFE』</span></p>
+        <p id="bookDescription"><span id="bookDescribe">This book is about the vision making for our lives.<br></br>We can know that what vision is, and how to build appropriate vision.</span></p>
+
         <a id="readButton" onClick={this.checkToken} href="/content">Read more</a>
         </div>
         <p id="authorized"></p>
@@ -102,6 +104,7 @@ class Home extends Component {
         </div>
         <a id="readButton" onClick={this.transfer}>GIVE</a>
         <p id="transferDetail">This book is read by {this.state.times} people</p>
+        <p>＊Please install <span><a href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=ja">Metamask</a></span>Metamask if you do not have. And use rinkeby network.＊</p>
         <Switch>
         <Route exact path="/content" component={Content}></Route>
         </Switch>

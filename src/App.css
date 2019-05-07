@@ -1,7 +1,9 @@
 .App {
   text-align: center;
-  margin: 40px auto 0;
-  text-align: center;
+  min-height: 100vh;
+  position:  relative;
+  padding-bottom: 20px;
+  box-sizing: border-box;
 }
 
 .left-navi {
@@ -39,6 +41,16 @@
   background-color: rgb(11, 58, 145);
   color: white;
   font-family: serif;
+}
+hr {
+  margin-bottom: 0;
+}
+.footer {
+  background-color: rgb(11, 58, 145);
+  color: white;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 
 
