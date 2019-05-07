@@ -1,1 +1,6 @@
-{}
+{
+  "projects": {
+    "master": "gibook",
+    "default": "gibook"
+  }
+}
