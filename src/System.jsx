@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React　from 'react';
 import blockChain_img from './img/blockchain_img.png';
 import key from './img/key.png';
 import bookSharing from './img/bookSharing.jpg';

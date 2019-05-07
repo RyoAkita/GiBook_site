@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
-import Content from './Content.jsx';
 import './Content-japanese.css';
 
 

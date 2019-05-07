@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import web3 from './Web3';
 import giBookJSON from './contracts/giBook.json';
 import Content from './Content.jsx';
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './Home.css';
 import bookImg from './img/bookTitle.jpeg';
 

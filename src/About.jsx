@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React　from 'react';
 import bookImg from './img/Digital-library.jpg';
 import bookSharing from './img/bookSharing.jpg';
 import './about.css';
